@@ -48,7 +48,7 @@ const WorkDetailsStep: React.FC<Props> = ({ data, onChange }) => {
     : null;
 
   return (
-    <div className="grid grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
       <div>
         <label className="block text-xs font-semibold text-[#203D47] uppercase mb-2">
           Área / Departamento
@@ -56,7 +56,7 @@ const WorkDetailsStep: React.FC<Props> = ({ data, onChange }) => {
         <select
           value={data.areaId || ""}
           onChange={(e) => onChange({ areaId: e.target.value, positionId: "" })}
-          className="w-full px-4 py-3 border-2 border-gray-300 rounded text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#2ECC71] focus:border-[#2ECC71] text-gray-700"
+          className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-300 rounded text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#2ECC71] focus:border-[#2ECC71] text-gray-700"
         >
           <option value="">Seleccionar Área</option>
           {areas.map((a) => (
@@ -74,7 +74,7 @@ const WorkDetailsStep: React.FC<Props> = ({ data, onChange }) => {
         <select
           value={data.positionId || ""}
           onChange={(e) => onChange({ positionId: e.target.value })}
-          className="w-full px-4 py-3 border-2 border-gray-300 rounded text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#2ECC71] focus:border-[#2ECC71] text-gray-700"
+          className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-300 rounded text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#2ECC71] focus:border-[#2ECC71] text-gray-700"
         >
           <option value="">Seleccionar Cargo</option>
           {positions.map((p) => {
@@ -98,7 +98,7 @@ const WorkDetailsStep: React.FC<Props> = ({ data, onChange }) => {
         )}
       </div>
 
-      <div className="col-span-2 rounded-lg bg-[#f4f7f8] border border-[#d1dde2] p-4 text-xs text-[#576975] leading-relaxed">
+      <div className="sm:col-span-2 rounded-lg bg-[#f4f7f8] border border-[#d1dde2] p-4 text-xs text-[#576975] leading-relaxed">
         <p className="font-semibold text-[#203D47] mb-1">Sobre el contrato</p>
         El tipo de contrato, fecha de inicio, duración y condiciones laborales se
         gestionan después desde el módulo de <strong>Contratos</strong>, una vez

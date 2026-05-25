@@ -66,7 +66,7 @@ export default function ReportesPage() {
   return (
     <div className="flex flex-col min-h-screen bg-[#f4f7f8]">
       <Header user={null} />
-      <main className="flex-1 mx-auto w-full max-w-5xl px-6 py-8">
+      <main className="flex-1 mx-auto w-full max-w-5xl px-4 sm:px-6 py-6 sm:py-8">
         {esGestor ? <ReportesGestor /> : <MisEvaluaciones />}
       </main>
     </div>
@@ -223,13 +223,13 @@ function ReportesGestor() {
   return (
     <>
       <div className="mb-6">
-        <h1 className="text-xl font-bold text-[#0F1819]">Reportes de Desempeño</h1>
-        <p className="text-sm text-[#8aa3ad] mt-0.5">
+        <h1 className="text-lg sm:text-xl font-bold text-[#0F1819]">Reportes de Desempeño</h1>
+        <p className="text-xs sm:text-sm text-[#8aa3ad] mt-0.5">
           Genera reportes consolidados o por área a partir de las evaluaciones registradas.
         </p>
       </div>
 
-      <div className="rounded-2xl border border-[#e4ebee] bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border border-[#e4ebee] bg-white p-4 sm:p-6 shadow-sm">
         <div className="mb-6 flex items-center gap-2">
           <BarChart3 size={18} className="text-emerald-500" />
           <h2 className="text-base font-semibold text-[#0F1819]">Configuración del reporte</h2>
@@ -485,8 +485,8 @@ function MisEvaluaciones() {
   return (
     <>
       <div className="mb-6">
-        <h1 className="text-xl font-bold text-[#0F1819]">Mis evaluaciones de desempeño</h1>
-        <p className="text-sm text-[#8aa3ad] mt-0.5">
+        <h1 className="text-lg sm:text-xl font-bold text-[#0F1819]">Mis evaluaciones de desempeño</h1>
+        <p className="text-xs sm:text-sm text-[#8aa3ad] mt-0.5">
           Resumen agregado de todas las evaluaciones que has recibido. Si todavía no tienes
           evaluaciones registradas, aparecerá vacío.
         </p>

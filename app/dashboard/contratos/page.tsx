@@ -149,7 +149,7 @@ function ContratosContenido() {
     <div className="flex flex-col h-full w-full bg-[#f4f7f8]">
       <Header user={null} />
 
-      <main className="flex-1 px-6 py-6 overflow-auto">
+      <main className="flex-1 px-4 sm:px-6 py-4 sm:py-6 overflow-auto">
         {/* Breadcrumb + Título */}
         <nav className="flex items-center gap-1.5 text-xs text-[#8aa3ad] mb-3">
           <span className="hover:text-[#203D47] cursor-pointer transition-colors">Panel</span>
@@ -158,8 +158,8 @@ function ContratosContenido() {
         </nav>
 
         <div className="mb-6">
-          <h1 className="text-xl font-bold text-[#0F1819]">Contratos</h1>
-          <p className="text-sm text-[#8aa3ad] mt-0.5">
+          <h1 className="text-lg sm:text-xl font-bold text-[#0F1819]">Contratos</h1>
+          <p className="text-xs sm:text-sm text-[#8aa3ad] mt-0.5">
             Registro completo de todos los contratos laborales institucionales.
           </p>
         </div>
@@ -177,26 +177,26 @@ function ContratosContenido() {
             <ContractStatsBar estadisticas={estadisticas} />
 
             {/* Filtros */}
-            <div className="bg-white rounded-2xl border border-[#e8eef0] px-5 py-4 mb-5 flex items-center gap-3 flex-wrap">
-              <div className="flex items-center gap-2 flex-1 min-w-[260px] bg-[#f8fafb] border border-[#e8eef0] rounded-xl px-3.5 py-2.5">
+            <div className="bg-white rounded-2xl border border-[#e8eef0] px-4 sm:px-5 py-4 mb-5 flex flex-col sm:flex-row sm:items-center gap-3 sm:flex-wrap">
+              <div className="flex items-center gap-2 flex-1 sm:min-w-[260px] bg-[#f8fafb] border border-[#e8eef0] rounded-xl px-3.5 py-2.5">
                 <Search size={14} className="text-[#8aa3ad] shrink-0" />
                 <input
                   type="text"
                   value={busqueda}
                   onChange={(e) => setBusqueda(e.target.value)}
                   placeholder="Buscar por empleado, código o ID de contrato..."
-                  className="flex-1 text-sm bg-transparent outline-none text-[#0F1819] placeholder:text-[#c5d5db]"
+                  className="flex-1 min-w-0 text-sm bg-transparent outline-none text-[#0F1819] placeholder:text-[#c5d5db]"
                 />
               </div>
 
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1 sm:w-auto w-full">
                 <label className="text-[10px] font-bold uppercase tracking-wider text-[#8aa3ad]">
                   Estado
                 </label>
                 <select
                   value={filtroEstado}
                   onChange={(e) => setFiltroEstado(e.target.value as EstadoContrato | "TODOS")}
-                  className="bg-white border border-[#d1dde2] rounded-lg px-3 py-2 text-sm text-[#0F1819] focus:outline-none focus:ring-2 focus:ring-emerald-400 min-w-[160px]"
+                  className="bg-white border border-[#d1dde2] rounded-lg px-3 py-2 text-sm text-[#0F1819] focus:outline-none focus:ring-2 focus:ring-emerald-400 sm:min-w-[160px] w-full sm:w-auto"
                 >
                   {ESTADOS.map((est) => (
                     <option key={est} value={est}>

@@ -233,9 +233,9 @@ export default function UserProfileCard({
   return (
     <div className="min-h-screen bg-platinum-100">
       <div className="border-b border-platinum-200 bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-8">
-          <div className="flex items-start justify-between gap-8">
-            <div className="flex flex-1 items-start gap-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-6 sm:py-8">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 lg:gap-8">
+            <div className="flex flex-1 items-start gap-4 sm:gap-6">
               <div className="relative flex-shrink-0">
                 {user.foto ? (
                   <img
@@ -255,11 +255,11 @@ export default function UserProfileCard({
                 )}
               </div>
 
-              <div className="flex-1 pt-1">
-                <h1 className="text-3xl font-bold text-jet-black-900">
+              <div className="flex-1 pt-1 min-w-0">
+                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-jet-black-900 break-words">
                   {user.nombre} {user.apellidos}
                 </h1>
-                <p className="mt-1 font-medium text-platinum-700">{user.cargo} • {user.area}</p>
+                <p className="mt-1 text-sm sm:text-base font-medium text-platinum-700 break-words">{user.cargo} • {user.area}</p>
                 <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-platinum-700">
                   <span className="flex items-center gap-2">
                     <span className="font-semibold text-platinum-600">EMP-{codigoVisible}</span>
@@ -280,7 +280,7 @@ export default function UserProfileCard({
               </div>
             </div>
 
-            <div className="flex flex-col items-end gap-3 shrink-0">
+            <div className="flex flex-col items-stretch lg:items-end gap-3 shrink-0 w-full lg:w-auto">
               <div className="flex items-center gap-3" aria-label={`Estado: ${estadoConfig.label}`}>
                 <span className="text-xs font-medium text-platinum-600">Estado</span>
                 <div className="flex items-center gap-2">
@@ -294,7 +294,7 @@ export default function UserProfileCard({
               {!isAdmin && (
                 <button
                   onClick={onEdit}
-                  className="flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-emerald-400"
+                  className="flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-emerald-400"
                 >
                   <Edit3 className="h-4 w-4" />
                   Editar Información
@@ -303,7 +303,7 @@ export default function UserProfileCard({
 
               <button
                 onClick={() => setIsPasswordModalOpen(true)}
-                className="flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-emerald-400"
+                className="flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-emerald-400"
               >
                 <LockKeyhole className="h-4 w-4" />
                 Editar Contraseña
@@ -318,9 +318,9 @@ export default function UserProfileCard({
           mostramos la sección de Información Personal — los tabs se ocultan
           por completo. */}
       {!isAdmin && (
-        <div className="border-b border-platinum-200 bg-white">
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="flex gap-8">
+        <div className="border-b border-platinum-200 bg-white overflow-x-auto">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <div className="flex gap-4 sm:gap-8 min-w-max">
               {[
                 { id: 'trayectoria', label: 'Trayectoria', icon: '◆' },
                 { id: 'contratos',   label: 'Contratos',   icon: '□' },
@@ -349,15 +349,15 @@ export default function UserProfileCard({
         </div>
       )}
 
-      <div className="mx-auto max-w-7xl px-6 py-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-6 sm:py-8">
         {isAdmin ? (
           // Admin: una sola columna con Información Personal centrada.
           <div className="max-w-2xl">
             <SidebarInformacionPersonal user={user} estadoLabel={estadoConfig.label} codigoVisible={codigoVisible} />
           </div>
         ) : (
-        <div className="grid grid-cols-3 gap-6">
-          <div className="col-span-2">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2">
             {activeTab === 'trayectoria' && (
               <div className="rounded-xl bg-white p-8 shadow-sm">
                 <h2 className="mb-8 text-lg font-bold text-jet-black-900">Trayectoria Profesional</h2>

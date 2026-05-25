@@ -46,7 +46,7 @@ export default function AreasTable({
   return (
     <div className="bg-white rounded-2xl border border-[#e8eef0] overflow-hidden">
       {/* Barra de busqueda y filtros */}
-      <div className="flex items-center gap-3 px-5 py-4 border-b border-[#f0f4f5]">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-3 px-4 sm:px-5 py-4 border-b border-[#f0f4f5]">
         <div className="flex items-center gap-2 flex-1 bg-[#f8fafb] border border-[#e8eef0] rounded-xl px-3.5 py-2.5">
           <Search size={14} className="text-[#8aa3ad] shrink-0" />
           <input
@@ -54,10 +54,10 @@ export default function AreasTable({
             value={busqueda}
             onChange={(e) => { setBusqueda(e.target.value); setPaginaActual(1); }}
             placeholder="Buscar areas..."
-            className="flex-1 text-sm bg-transparent outline-none text-[#0F1819] placeholder:text-[#c5d5db]"
+            className="flex-1 min-w-0 text-sm bg-transparent outline-none text-[#0F1819] placeholder:text-[#c5d5db]"
           />
         </div>
-        <button className="flex items-center gap-2 px-3.5 py-2.5 text-sm text-[#203D47] border border-[#d1dde2] rounded-xl hover:bg-[#ECEFF1] transition-colors">
+        <button className="flex items-center justify-center gap-2 px-3.5 py-2.5 text-sm text-[#203D47] border border-[#d1dde2] rounded-xl hover:bg-[#ECEFF1] transition-colors w-full sm:w-auto">
           <Filter size={14} />
           Filtrar
         </button>
@@ -65,7 +65,7 @@ export default function AreasTable({
 
       {/* Tabla */}
       <div className="overflow-x-auto">
-        <table className="w-full">
+        <table className="w-full min-w-[640px]">
           <thead>
             <tr className="border-b border-[#f0f4f5]">
               <th className="px-5 py-3 text-left text-[10px] font-bold text-[#8aa3ad] uppercase tracking-widest">
@@ -110,13 +110,13 @@ export default function AreasTable({
       </div>
 
       {/* Paginacion */}
-      <div className="flex items-center justify-between px-5 py-4 border-t border-[#f0f4f5]">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-4 sm:px-5 py-4 border-t border-[#f0f4f5]">
         <span className="text-xs text-[#8aa3ad]">
           Mostrando {areasFiltradas.length === 0 ? 0 : inicio + 1} a{" "}
           {Math.min(inicio + ITEMS_POR_PAGINA, areasFiltradas.length)} de{" "}
           {areasFiltradas.length} registros
         </span>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 flex-wrap">
           <button
             onClick={() => irAPagina(paginaActual - 1)}
             disabled={paginaActual === 1}

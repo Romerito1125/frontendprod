@@ -133,7 +133,7 @@ export default function RegisterForm() {
 
   if (bootError) {
     return (
-      <div className="bg-white p-8 rounded-xl shadow w-[350px] flex flex-col gap-4 text-center">
+      <div className="bg-white p-6 sm:p-8 rounded-xl shadow w-full max-w-[350px] flex flex-col gap-4 text-center">
         <h2 className="text-lg font-semibold text-gray-700">Invitación inválida</h2>
         <p className="text-sm text-gray-600 leading-relaxed">{bootError}</p>
         <button
@@ -157,7 +157,7 @@ export default function RegisterForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white p-8 rounded-xl shadow w-[380px] flex flex-col gap-4"
+      className="bg-white p-6 sm:p-8 rounded-xl shadow w-full max-w-[380px] flex flex-col gap-4"
     >
       <h2 className="text-lg font-semibold text-center text-gray-700">
         Definir contraseña

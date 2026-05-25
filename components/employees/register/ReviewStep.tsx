@@ -8,9 +8,9 @@ interface Props {
 
 const ReviewStep: React.FC<Props> = ({ data, employeeId }) => {
   return (
-    <div className="grid grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
       {/* Left Column - Employee Summary */}
-      <div className="col-span-2 space-y-4">
+      <div className="md:col-span-2 space-y-4">
         <div className="flex items-center gap-2 mb-4">
           <div className="w-5 h-5 bg-[#2ECC71] rounded flex items-center justify-center text-white text-xs">
             ✓
@@ -19,7 +19,7 @@ const ReviewStep: React.FC<Props> = ({ data, employeeId }) => {
         </div>
 
         {/* Data Grid */}
-        <div className="grid grid-cols-2 gap-y-5 gap-x-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-y-5 gap-x-6">
           {/* Full Name */}
           <div>
             <div className="text-xs font-semibold text-[#8aa3ad] uppercase mb-1">Nombre Completo</div>
@@ -80,7 +80,7 @@ const ReviewStep: React.FC<Props> = ({ data, employeeId }) => {
       </div>
 
       {/* Right Column - Digital ID Preview */}
-      <div className="col-span-1">
+      <div className="md:col-span-1">
         <div className="bg-gradient-to-b from-[#1E333A] to-[#0F1819] rounded-lg p-6 text-white text-center">
           <div className="mb-4">
             <div className="text-xs font-semibold uppercase text-[#8aa3ad] mb-3">Identificación Digital</div>

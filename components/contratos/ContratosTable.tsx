@@ -343,7 +343,7 @@ function ContractDetailPanel({
       />
 
       {/* Panel */}
-      <div className="fixed right-0 top-0 z-[9999] h-full w-[340px] bg-white flex flex-col shadow-2xl overflow-hidden">
+      <div className="fixed right-0 top-0 z-[9999] h-full w-full max-w-[340px] bg-white flex flex-col shadow-2xl overflow-hidden">
 
         {/* Header */}
         <div className="flex items-center justify-between px-6 pt-6 pb-4">
@@ -575,7 +575,8 @@ export default function ContratosTable({
   return (
     <>
       <div className="bg-white rounded-2xl border border-[#e8eef0] overflow-hidden">
-        <table className="w-full">
+        <div className="overflow-x-auto">
+        <table className="w-full min-w-[720px]">
           <thead>
             <tr className="border-b border-[#f0f4f5]">
               {modoMultiEmpleado && (
@@ -651,6 +652,7 @@ export default function ContratosTable({
             )}
           </tbody>
         </table>
+        </div>
       </div>
 
       {panelContrato && (

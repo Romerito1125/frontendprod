@@ -241,9 +241,9 @@ const Page = () => {
 
   return (
     <div className="bg-[#ECEFF1] min-h-screen">
-      <div className="px-8 py-6 bg-white border-b border-gray-200">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2 text-sm">
+      <div className="px-4 sm:px-8 py-4 sm:py-6 bg-white border-b border-gray-200">
+        <div className="flex items-center justify-between mb-3 sm:mb-4">
+          <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm">
             <span className="text-[#8aa3ad]">Panel</span>
             <span className="text-[#8aa3ad]">/</span>
             <span className="text-[#8aa3ad]">Directorio de Empleados</span>
@@ -255,20 +255,20 @@ const Page = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => router.back()}
-            className="text-[#203D47] text-2xl hover:text-gray-600 transition font-bold"
+            className="text-[#203D47] text-2xl hover:text-gray-600 transition font-bold shrink-0"
           >
             ×
           </button>
-          <h1 className="text-2xl font-bold text-[#203D47]">Registrar Nuevo Empleado</h1>
+          <h1 className="text-lg sm:text-2xl font-bold text-[#203D47]">Registrar Nuevo Empleado</h1>
         </div>
       </div>
 
-      <div className="px-8 py-8">
-        <div className="mb-8 bg-white p-6 rounded-lg shadow-sm">
+      <div className="px-4 sm:px-8 py-4 sm:py-8">
+        <div className="mb-6 sm:mb-8 bg-white p-4 sm:p-6 rounded-lg shadow-sm">
           <StepIndicator step={step} />
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
+        <div className="bg-white rounded-lg shadow-sm p-4 sm:p-8 mb-6 sm:mb-8">
           {step === 1 && <PersonalDataStep data={data} onChange={patch} errors={step1Errors} />}
           {step === 2 && <WorkDetailsStep data={data} onChange={patch} />}
           {step === 3 && (
@@ -276,11 +276,11 @@ const Page = () => {
           )}
         </div>
 
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
           <button
             onClick={back}
             disabled={step === 1}
-            className={`px-6 py-2 border rounded text-sm font-semibold transition ${
+            className={`px-4 sm:px-6 py-2 border rounded text-sm font-semibold transition w-full sm:w-auto ${
               step === 1
                 ? "opacity-50 cursor-not-allowed border-gray-300 text-gray-400"
                 : "border-gray-300 text-[#203D47] hover:bg-gray-50"
@@ -289,17 +289,17 @@ const Page = () => {
             ← Volver a Editar
           </button>
 
-          <div className="flex gap-3">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
             <button
               onClick={() => router.push("/dashboard/empleados")}
-              className="px-6 py-2 border border-gray-300 rounded text-sm font-semibold text-[#203D47] hover:bg-gray-50 transition"
+              className="px-4 sm:px-6 py-2 border border-gray-300 rounded text-sm font-semibold text-[#203D47] hover:bg-gray-50 transition w-full sm:w-auto"
             >
               Cancelar
             </button>
             <button
               onClick={next}
               disabled={submitting}
-              className="px-6 py-2 bg-[#2ECC71] text-white rounded text-sm font-semibold hover:bg-green-600 transition disabled:opacity-60"
+              className="px-4 sm:px-6 py-2 bg-[#2ECC71] text-white rounded text-sm font-semibold hover:bg-green-600 transition disabled:opacity-60 w-full sm:w-auto"
             >
               {step === 3 ? (submitting ? "Enviando…" : "Confirmar Registro") : "Siguiente →"}
             </button>

@@ -54,30 +54,30 @@ export default function PaginaAreas() {
   return (
     <div className="flex flex-col h-full w-full bg-[#f4f7f8]">
       {/* Barra superior con breadcrumb */}
-      <header className="flex items-center justify-between px-6 py-3.5 bg-white border-b border-[#d1dde2] shrink-0">
-        <nav className="flex items-center gap-1.5 text-xs text-[#8aa3ad]">
+      <header className="flex items-center justify-between px-4 sm:px-6 py-3.5 bg-white border-b border-[#d1dde2] shrink-0">
+        <nav className="flex flex-wrap items-center gap-1.5 text-xs text-[#8aa3ad]">
           <span className="hover:text-[#203D47] cursor-pointer transition-colors">Dashboard</span>
           <ChevronRight size={12} className="text-[#c5d5db]" />
-          <span className="hover:text-[#203D47] cursor-pointer transition-colors">Estructura Organizacional</span>
-          <ChevronRight size={12} className="text-[#c5d5db]" />
+          <span className="hidden sm:inline hover:text-[#203D47] cursor-pointer transition-colors">Estructura Organizacional</span>
+          <ChevronRight size={12} className="text-[#c5d5db] hidden sm:inline" />
           <span className="text-[#0F1819] font-semibold">Areas</span>
         </nav>
       </header>
 
       {/* Contenido principal */}
-      <main className="flex-1 px-6 py-6 overflow-auto">
+      <main className="flex-1 px-4 sm:px-6 py-4 sm:py-6 overflow-auto">
         {/* Titulo y boton */}
-        <div className="flex items-start justify-between mb-6">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between mb-6">
           <div>
-            <h1 className="text-xl font-bold text-[#0F1819]">Gestion de Areas</h1>
-            <p className="text-sm text-[#8aa3ad] mt-0.5">
+            <h1 className="text-lg sm:text-xl font-bold text-[#0F1819]">Gestion de Areas</h1>
+            <p className="text-xs sm:text-sm text-[#8aa3ad] mt-0.5">
               Define y administra los departamentos y unidades de negocio de la organizacion.
             </p>
           </div>
           {puedeGestionar && (
             <button
               onClick={() => setMostrarCrear(true)}
-              className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition-colors shrink-0"
+              className="flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition-colors shrink-0 w-full sm:w-auto"
             >
               <Plus size={15} />
               Nueva Área
