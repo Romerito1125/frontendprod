@@ -12,9 +12,9 @@ export default function DashboardLayout({
     <AuthProvider>
       <RouteGuard>
         <FirstLoginGate>
-          <div className="flex min-h-screen bg-[#ECEFF1]">
+          <div className="flex flex-col md:flex-row min-h-screen bg-[#ECEFF1]">
             <Sidebar />
-            <main className="flex-1 overflow-auto">
+            <main className="flex-1 overflow-auto min-w-0">
               {children}
             </main>
           </div>

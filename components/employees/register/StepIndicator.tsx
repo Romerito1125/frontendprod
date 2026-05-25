@@ -23,7 +23,7 @@ const StepIndicator: React.FC<Props> = ({ step }) => {
           <div key={s.n} className="flex items-center flex-1">
             <div className="flex flex-col items-center w-full">
               <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${
+                className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 ${
                   isActive
                     ? "bg-[#1E333A] text-white shadow-md"
                     : isCompleted
@@ -34,7 +34,7 @@ const StepIndicator: React.FC<Props> = ({ step }) => {
                 {s.n}
               </div>
               <span
-                className={`text-xs font-semibold mt-2 ${
+                className={`text-[10px] sm:text-xs font-semibold mt-1.5 sm:mt-2 text-center leading-tight px-1 ${
                   isActive
                     ? "text-[#203D47]"
                     : isCompleted

@@ -70,9 +70,9 @@ export default function NuevoAdminModal({ isOpen, onCerrar, onCreado, crear }: P
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-      <div className="w-full max-w-md rounded-2xl bg-white shadow-xl mx-4">
-        <div className="flex items-center justify-between border-b border-[#f0f4f5] px-6 py-5">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4 overflow-y-auto">
+      <div className="w-full max-w-md rounded-2xl bg-white shadow-xl my-4">
+        <div className="flex items-center justify-between border-b border-[#f0f4f5] px-4 sm:px-6 py-4 sm:py-5">
           <div className="flex items-center gap-2.5">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500 text-white">
               <ShieldCheck size={18} />
@@ -87,8 +87,8 @@ export default function NuevoAdminModal({ isOpen, onCerrar, onCreado, crear }: P
           </button>
         </div>
 
-        <div className="flex flex-col gap-4 px-6 py-5">
-          <div className="grid grid-cols-2 gap-3">
+        <div className="flex flex-col gap-4 px-4 sm:px-6 py-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="flex flex-col gap-1.5">
               <label className="text-sm font-medium text-[#0F1819]">
                 Nombre <span className="text-rose-500">*</span>
@@ -157,17 +157,17 @@ export default function NuevoAdminModal({ isOpen, onCerrar, onCreado, crear }: P
           </div>
         </div>
 
-        <div className="flex items-center justify-end gap-3 border-t border-[#f0f4f5] px-6 py-4">
+        <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-end gap-3 border-t border-[#f0f4f5] px-4 sm:px-6 py-4">
           <button
             onClick={() => { reset(); onCerrar(); }}
-            className="rounded-lg border border-[#d1dde2] px-4 py-2 text-sm text-[#8aa3ad] hover:text-[#0F1819]"
+            className="rounded-lg border border-[#d1dde2] px-4 py-2 text-sm text-[#8aa3ad] hover:text-[#0F1819] w-full sm:w-auto"
           >
             Cancelar
           </button>
           <button
             onClick={submit}
             disabled={guardando}
-            className="rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-emerald-400 disabled:opacity-60"
+            className="rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-emerald-400 disabled:opacity-60 w-full sm:w-auto"
           >
             {guardando ? "Creando..." : "Crear administrador"}
           </button>

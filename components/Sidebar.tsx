@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
@@ -13,6 +14,8 @@ import {
   ShieldCheck,
   BarChart3,
   QrCode,
+  Menu,
+  X,
 } from "lucide-react";
 
 import { useAuth } from "@/lib/auth/AuthContext";
@@ -134,6 +137,12 @@ export default function Sidebar() {
   const router = useRouter();
   const rutaActual = usePathname();
   const { authUser, signOut } = useAuth();
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  // Cerrar el menú móvil al navegar.
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [rutaActual]);
 
   const handleLogOut = async () => {
     try {
@@ -156,15 +165,25 @@ export default function Sidebar() {
     items: g.items.filter((it) => puedeVer(it, authUser)),
   })).filter((g) => g.items.length > 0);
 
-  return (
-    <aside className="flex flex-col w-[220px] h-screen sticky top-0 bg-[#0F1819] shrink-0">
-      <div className="flex items-center gap-2.5 px-5 py-5 border-b border-[#1E333A]">
-        <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center shrink-0">
-          <span className="text-white font-bold text-sm">T</span>
+  const sidebarContent = (
+    <>
+      <div className="flex items-center justify-between gap-2.5 px-5 py-5 border-b border-[#1E333A]">
+        <div className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center shrink-0">
+            <span className="text-white font-bold text-sm">T</span>
+          </div>
+          <span className="text-white font-bold text-base tracking-tight">
+            TalentCore
+          </span>
         </div>
-        <span className="text-white font-bold text-base tracking-tight">
-          TalentCore
-        </span>
+        <button
+          type="button"
+          onClick={() => setMobileOpen(false)}
+          className="md:hidden text-[#8aa3ad] hover:text-white p-1"
+          aria-label="Cerrar menú"
+        >
+          <X size={20} />
+        </button>
       </div>
 
       <nav className="flex flex-col gap-4 px-3 py-4 flex-1 overflow-y-auto scrollbar-none [&::-webkit-scrollbar]:hidden">
@@ -232,6 +251,49 @@ export default function Sidebar() {
           Cerrar Sesión
         </button>
       </div>
-    </aside>
+    </>
+  );
+
+  return (
+    <>
+      {/* Topbar móvil — solo visible debajo de md. Incluye logo + hamburguesa. */}
+      <div className="md:hidden sticky top-0 z-40 flex items-center justify-between bg-[#0F1819] px-4 py-3 border-b border-[#1E333A]">
+        <div className="flex items-center gap-2.5">
+          <div className="w-7 h-7 rounded-lg bg-emerald-500 flex items-center justify-center shrink-0">
+            <span className="text-white font-bold text-xs">T</span>
+          </div>
+          <span className="text-white font-bold text-sm tracking-tight">
+            TalentCore
+          </span>
+        </div>
+        <button
+          type="button"
+          onClick={() => setMobileOpen(true)}
+          className="text-[#8aa3ad] hover:text-white p-1.5 rounded-lg hover:bg-[#1E333A]"
+          aria-label="Abrir menú"
+        >
+          <Menu size={20} />
+        </button>
+      </div>
+
+      {/* Sidebar fijo (≥ md). */}
+      <aside className="hidden md:flex flex-col w-[220px] h-screen sticky top-0 bg-[#0F1819] shrink-0">
+        {sidebarContent}
+      </aside>
+
+      {/* Drawer móvil. Backdrop + panel deslizante. */}
+      {mobileOpen && (
+        <div className="md:hidden fixed inset-0 z-50 flex">
+          <div
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setMobileOpen(false)}
+            aria-hidden
+          />
+          <aside className="relative flex flex-col w-[260px] max-w-[80vw] h-full bg-[#0F1819] shadow-xl animate-[slide-in-right_0.2s_ease-out]">
+            {sidebarContent}
+          </aside>
+        </div>
+      )}
+    </>
   );
 }

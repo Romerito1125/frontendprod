@@ -67,10 +67,10 @@ export default function DashboardPage() {
     <div className="flex min-h-full w-full flex-col bg-platinum-50">
       <Header user={null} />
 
-      <main className="flex-1 overflow-auto px-6 py-6">
+      <main className="flex-1 overflow-auto px-4 sm:px-6 py-4 sm:py-6">
         <div className="mb-6 space-y-1">
-          <h1 className="text-xl font-bold text-ink-black-900">Pulso Organizacional</h1>
-          <p className="text-sm text-platinum-400">
+          <h1 className="text-lg sm:text-xl font-bold text-ink-black-900">Pulso Organizacional</h1>
+          <p className="text-xs sm:text-sm text-platinum-400">
             Supervision en tiempo real del capital humano y contratos estrategicos.
           </p>
         </div>
@@ -85,7 +85,7 @@ export default function DashboardPage() {
 
         {!cargando && !error && estadisticas && (
           <>
-            <div className="mb-6 grid gap-4 md:grid-cols-3">
+            <div className="mb-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
               {/* Las variaciones porcentuales se quitaron: no hay cómputo
                   real de "vs mes anterior", así que mostrar "+0%" mentía. */}
               <StatsCard

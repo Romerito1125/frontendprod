@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React from "react";
 import { DOCUMENT_TYPES } from "../../../services/registerEmployeeService";
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 
 // Helpers de estilo consistentes entre campos: borde rojo si hay error.
 const baseInput =
-  "w-full px-4 py-3 border-2 rounded text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#2ECC71] focus:border-[#2ECC71] text-gray-700";
+  "w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 rounded text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#2ECC71] focus:border-[#2ECC71] text-gray-700";
 const inputClass = (hasError?: boolean) =>
   `${baseInput} ${hasError ? "border-red-400 bg-red-50" : "border-gray-300"}`;
 
@@ -21,38 +21,10 @@ function FieldError({ message }: { message?: string }) {
 }
 
 const PersonalDataStep: React.FC<Props> = ({ data, onChange, errors = {} }) => {
-  const [photoPreview, setPhotoPreview] = useState<string | undefined>(data.photo);
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const docsInputRef = useRef<HTMLInputElement | null>(null);
-
-  const handlePhoto = (file?: File) => {
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      const res = reader.result as string;
-      setPhotoPreview(res);
-      onChange({ photo: res });
-    };
-    reader.readAsDataURL(file);
-  };
-
-  const handleDocs = (files: FileList | null) => {
-    if (!files) return;
-    const arr = Array.from(files).map((f) => ({ name: f.name, size: f.size, type: f.type }));
-    onChange({ files: [...(data.files || []), ...arr] });
-  };
-
-  const removeDoc = (i: number) => {
-    const next = (data.files || []).filter((_: any, idx: number) => idx !== i);
-    onChange({ files: next });
-  };
-
-  const bytesToKb = (n: number) => `${Math.round(n / 1024)} KB`;
-
   return (
-    <div className="grid grid-cols-1 gap-8">
+    <div className="grid grid-cols-1 gap-4 sm:gap-8">
       {/* Left Column - Personal Info */}
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         {/* Full Name */}
         <div>
           <label className="block text-xs font-semibold text-[#203D47] uppercase mb-2">
@@ -69,7 +41,7 @@ const PersonalDataStep: React.FC<Props> = ({ data, onChange, errors = {} }) => {
         </div>
 
         {/* Document Type & Number */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-xs font-semibold text-[#203D47] uppercase mb-2">
               Tipo de Documento
@@ -139,65 +111,7 @@ const PersonalDataStep: React.FC<Props> = ({ data, onChange, errors = {} }) => {
           />
           <FieldError message={errors.age} />
         </div>
-
-        {/* Documents */}
-        <div>
-          <label className="block text-xs font-semibold text-[#203D47] uppercase mb-3">
-            Subir Documentos del Empleado
-          </label>
-          <div
-            onClick={() => docsInputRef.current?.click()}
-            className="p-8 border-2 border-dashed border-[#8aa3ad] rounded-md cursor-pointer hover:bg-[#ECEFF1] transition text-center"
-          >
-            <div className="text-sm text-[#8aa3ad] mb-2">
-              Arrastra y suelta los archivos aquí o haz clic para explorar
-            </div>
-            <div className="text-xs text-[#8aa3ad]">
-              PDF, DOCX, PNG, JPG — máximo 10MB cada uno
-            </div>
-            <input
-              ref={docsInputRef}
-              type="file"
-              className="hidden"
-              multiple
-              accept=".pdf,.docx,image/png,image/jpeg"
-              onChange={(e) => handleDocs(e.target.files)}
-            />
-          </div>
-
-          {/* Files List */}
-          {(data.files || []).length > 0 && (
-            <div className="mt-4 space-y-2">
-              {(data.files || []).map((f: any, idx: number) => (
-                <div
-                  key={idx}
-                  className="flex items-center justify-between p-3 bg-[#ECEFF1] rounded border border-gray-200"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="w-8 h-8 bg-white rounded flex items-center justify-center text-xs font-bold text-[#203D47]">
-                      {f.name.split(".").pop()?.toUpperCase()}
-                    </div>
-                    <div className="flex-1">
-                      <div className="text-sm text-[#203D47] font-medium">{f.name}</div>
-                      <div className="text-xs text-[#8aa3ad]">
-                        {bytesToKb(f.size)} • Listo para subir
-                      </div>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => removeDoc(idx)}
-                    className="ml-2 text-[#8aa3ad] hover:text-red-500 text-lg font-bold"
-                  >
-                    ×
-                  </button>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
       </div>
-
-
     </div>
   );
 };

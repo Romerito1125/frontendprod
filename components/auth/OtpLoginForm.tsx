@@ -101,7 +101,7 @@ export default function OtpLoginForm() {
     return (
       <form
         onSubmit={handlePedirCodigo}
-        className="bg-white p-8 rounded-xl shadow w-[380px] flex flex-col gap-4"
+        className="bg-white p-6 sm:p-8 rounded-xl shadow w-full max-w-[380px] flex flex-col gap-4"
       >
         <div className="flex items-center gap-3 mb-1">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500 text-white">
@@ -139,7 +139,7 @@ export default function OtpLoginForm() {
   return (
     <form
       onSubmit={handleVerificar}
-      className="bg-white p-8 rounded-xl shadow w-[380px] flex flex-col gap-4"
+      className="bg-white p-6 sm:p-8 rounded-xl shadow w-full max-w-[380px] flex flex-col gap-4"
     >
       <div className="flex items-center gap-3 mb-1">
         <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500 text-white">
